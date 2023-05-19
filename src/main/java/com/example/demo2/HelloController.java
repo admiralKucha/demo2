@@ -7,11 +7,14 @@ import javafx.scene.image.ImageView;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.util.Arrays;
 
 
 public class HelloController {
     private static int[][] matrix1;
     private static int[][] matrix2;
+    private static int[] matrixres = new int[9];
+
     protected int chclor(int color, int ch){
         if (color + ch > 255){
             color = 255;
@@ -309,6 +312,147 @@ public class HelloController {
         }
     }
     @FXML
+    protected void toMedian() throws IOException {
+        ViewSwitch.switchTo(View.MEDIAN);
+        File file = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo1.jpg");
+        BufferedImage image = ImageIO.read(file);
+        int height = (int)image.getHeight();
+        int width = (int)image.getWidth();
+        matrix1 = new int[height+2][width+2];
+        matrix2 = new int[height+2][width+2];
+        for (int i = 0; i < height+2; i++) {
+            matrix1[i][0] = 255;
+            matrix1[i][width+1] = 255;
+        }
+        for (int i = 0; i < width+2; i++) {
+            matrix1[0][i] = 255;
+            matrix1[height+1][i] = 255;
+        }
+        try {
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    int color = image.getRGB(x, y);
+                    int red = (color >> 16) & 0xff;
+                    int green = (color >> 8) & 0xff;
+                    int blue = color & 0xff;
+                    int gray = (int) (0.3*red+0.59*green+0.11*blue);
+                    int newColor =  (gray << 16) | (gray << 8) | gray;
+                    image.setRGB(x, y, newColor);
+                    matrix1[y+1][x+1] = gray;
+                }
+            }
+            ImageIO.write(image, "jpg", new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+            ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
+            newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    protected void toStochastic() throws IOException {
+        ViewSwitch.switchTo(View.STOCHAST);
+        File file = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo1.jpg");
+        BufferedImage image = ImageIO.read(file);
+        int height = (int)image.getHeight();
+        int width = (int)image.getWidth();
+        matrix1 = new int[height+2][width+2];
+        matrix2 = new int[height+2][width+2];
+        for (int i = 0; i < height+2; i++) {
+            matrix1[i][0] = 255;
+            matrix1[i][width+1] = 255;
+        }
+        for (int i = 0; i < width+2; i++) {
+            matrix1[0][i] = 255;
+            matrix1[height+1][i] = 255;
+        }
+        try {
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    int color = image.getRGB(x, y);
+                    int red = (color >> 16) & 0xff;
+                    int green = (color >> 8) & 0xff;
+                    int blue = color & 0xff;
+                    int gray = (int) (0.3*red+0.59*green+0.11*blue);
+                    int newColor =  (gray << 16) | (gray << 8) | gray;
+                    image.setRGB(x, y, newColor);
+                    matrix1[y+1][x+1] = gray;
+                }
+            }
+            ImageIO.write(image, "jpg", new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+            ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
+            newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    protected void toLaplace() throws IOException {
+        ViewSwitch.switchTo(View.LAPLACE);
+        File file = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo1.jpg");
+        BufferedImage image = ImageIO.read(file);
+        int height = (int)image.getHeight();
+        int width = (int)image.getWidth();
+        matrix1 = new int[height+2][width+2];
+        matrix2 = new int[height+2][width+2];
+        for (int i = 0; i < height+2; i++) {
+            matrix1[i][0] = 255;
+            matrix1[i][width+1] = 255;
+        }
+        for (int i = 0; i < width+2; i++) {
+            matrix1[0][i] = 255;
+            matrix1[height+1][i] = 255;
+        }
+        try {
+            for (int y = 0; y < height; y++) {
+                for (int x = 0; x < width; x++) {
+                    int color = image.getRGB(x, y);
+                    int red = (color >> 16) & 0xff;
+                    int green = (color >> 8) & 0xff;
+                    int blue = color & 0xff;
+                    int gray = (int) (0.3*red+0.59*green+0.11*blue);
+                    int newColor =  (gray << 16) | (gray << 8) | gray;
+                    image.setRGB(x, y, newColor);
+                    matrix1[y+1][x+1] = gray;
+                }
+            }
+            ImageIO.write(image, "jpg", new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+            ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
+            newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    protected void Laplace() throws IOException {
+        int[][] matrix = {
+                {0, 1, 0},
+                {1, -4, 1},
+                {0, 1, 0}
+        };
+        File file2 = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg");
+        BufferedImage image2 = ImageIO.read(file2);
+        int height = (int)image2.getHeight();
+        int width = (int)image2.getWidth();
+        matrix2 = new int[height+2][width+2];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                int res = 0;
+                for(int i = 0; i<3; i++){
+                    for(int j = 0; j < 3; j++){
+                        res += matrix1[y+i][x+j] *matrix[i][j];
+                    }
+                }
+                res = Math.abs(Math.min(255, res));
+                image2.setRGB(x, y, (res << 16) | (res << 8) | res);
+                matrix2[y+1][x+1] = res;
+            }
+        }
+        matrix1 = matrix2.clone();
+        ImageIO.write(image2, "jpg", new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+        ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
+        newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+    }
+    @FXML
     protected void HPF9() throws IOException {
         int[][] matrix = {
                 {-1, -1, -1},
@@ -361,6 +505,58 @@ public class HelloController {
                 res = Math.max(0, Math.min(255, res));
                 image2.setRGB(x, y, (res << 16) | (res << 8) | res);
                 matrix2[y+1][x+1] = res;
+            }
+        }
+        matrix1 = matrix2.clone();
+        ImageIO.write(image2, "jpg", new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+        ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
+        newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+    }
+    @FXML
+    protected void median() throws IOException {
+        File file2 = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg");
+        BufferedImage image2 = ImageIO.read(file2);
+        int height = (int)image2.getHeight();
+        int width = (int)image2.getWidth();
+
+        matrix2 = new int[height+2][width+2];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                for(int i = 0; i<3; i++){
+                    for(int j = 0; j < 3; j++){
+                        matrixres[3*i+j] =  matrix1[y+i][x+j];
+                    }
+                }
+                Arrays.sort(matrixres);
+                image2.setRGB(x, y, (matrixres[5] << 16) | (matrixres[5] << 8) | matrixres[5]);
+                matrix2[y+1][x+1] = matrixres[5];
+            }
+        }
+        matrix1 = matrix2.clone();
+        ImageIO.write(image2, "jpg", new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+        ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
+        newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg"));
+    }
+    @FXML
+    protected void stochastic() throws IOException {
+        File file2 = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo2.jpg");
+        BufferedImage image2 = ImageIO.read(file2);
+        int height = (int)image2.getHeight();
+        int width = (int)image2.getWidth();
+        int outVal;
+        matrix2 = new int[height+2][width+2];
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if(matrix1[y+1][x+1] < 128){outVal = 0;}
+                else{outVal = 255;}
+                outVal = matrix1[y+1][x+1] - outVal;
+                matrix2[y+1][x+2] += (8*outVal)/17;
+                matrix2[y+2][x] += (3*outVal)/17;
+                matrix2[y+2][x+1] += (5*outVal)/17;
+                matrix2[y+2][x+2] += (1*outVal)/17;
+                outVal = Math.max(0, Math.min(255, matrix2[y+1][x+1]+matrix1[y+1][x+1]));
+                matrix2[y+1][x+1] =outVal;
+                image2.setRGB(x, y, (outVal << 16) | (outVal << 8) | outVal);
             }
         }
         matrix1 = matrix2.clone();

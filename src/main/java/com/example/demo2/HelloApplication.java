@@ -15,18 +15,17 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        var scene = new  Scene(new Pane());
-
-        ViewSwitch.setScene(scene);
-        ViewSwitch.switchTo(View.MAIN);
-
         File file = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\original.jpg");
         BufferedImage image = ImageIO.read(file);
         File outputFile = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo1.jpg");
         ImageIO.write(image, "JPG", outputFile);
+        System.out.println("ADS");
+
+        var scene = new  Scene(new Pane());
+        ViewSwitch.setScene(scene);
+        ViewSwitch.switchTo(View.MAIN);
         ImageView newImageView = (ImageView) ViewSwitch.scene.lookup("#image");
         newImageView.setImage(new Image("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo1.jpg"));
-
         stage.setScene(scene);
         stage.show();
     }

@@ -13,6 +13,9 @@ public enum View {
     SOLAR("solarization.fxml"),
     LPF("LPF.fxml"),
     HPF("HPF.fxml"),
+    STOCHAST("stochastic.fxml"),
+    LAPLACE("Laplace.fxml"),
+    MEDIAN("median.fxml"),
     QUAN("quan.fxml"),
     HIST("hist.fxml");
 
