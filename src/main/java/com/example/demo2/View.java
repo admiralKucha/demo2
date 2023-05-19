@@ -14,8 +14,14 @@ public enum View {
     LPF("LPF.fxml"),
     HPF("HPF.fxml"),
     STOCHAST("stochastic.fxml"),
+    FUN("fun.fxml"),
     LAPLACE("Laplace.fxml"),
+    SOBEL("sobel.fxml"),
+    KIRSCH("kirsch.fxml"),
+    PREWITT("prewitt.fxml"),
     MEDIAN("median.fxml"),
+    ROBERTS("roberts.fxml"),
+    EDGE("edge.fxml"),
     QUAN("quan.fxml"),
     HIST("hist.fxml");
 

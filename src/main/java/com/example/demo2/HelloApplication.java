@@ -19,7 +19,6 @@ public class HelloApplication extends Application {
         BufferedImage image = ImageIO.read(file);
         File outputFile = new File("D:\\ImageProcessing\\demo2\\src\\main\\resources\\images\\photo1.jpg");
         ImageIO.write(image, "JPG", outputFile);
-        System.out.println("ADS");
 
         var scene = new  Scene(new Pane());
         ViewSwitch.setScene(scene);

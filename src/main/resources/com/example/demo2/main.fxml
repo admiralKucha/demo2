@@ -98,5 +98,35 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Button layoutX="680.0" layoutY="282.0" mnemonicParsing="false" onAction="#toEdge" text="edge">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="680.0" layoutY="326.0" mnemonicParsing="false" onAction="#toRoberts" text="Roberts">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="680.0" layoutY="369.0" mnemonicParsing="false" onAction="#toSobel" text="Sobel">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="678.0" layoutY="409.0" mnemonicParsing="false" onAction="#toPrewitt" text="Prewitt">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="678.0" layoutY="451.0" mnemonicParsing="false" onAction="#toKirsch" text="Kirsch">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button layoutX="832.0" layoutY="14.0" mnemonicParsing="false" onAction="#tofun" text="fun">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </Pane>
